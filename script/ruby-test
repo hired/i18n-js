@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -e
+./script/ruby-lint
+bundle exec rake

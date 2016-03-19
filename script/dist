@@ -1,0 +1,37 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+require "bundler/setup"
+require "erb"
+require "i18n-js"
+
+def update_version(path)
+  package = JSON.load(File.read(path))
+  package["version"] = I18n::JS::VERSION
+
+  File.open(path, "w") do |file|
+    file << JSON.pretty_generate(Hash[package.sort])
+  end
+end
+
+I18n::JS.include_shims = false
+
+output_dir = ENV.fetch("OUTPUT_DIR", "./dist")
+
+# First, export i18n.js
+file_path = File.expand_path("../../app/assets/javascripts/i18n.js.erb", __FILE__)
+contents = ERB.new(File.read(file_path), nil, "-")
+              .result
+              .lines
+              .reject {|line| line.start_with?("//=") }
+              .join("")
+
+FileUtils.mkdir_p(output_dir)
+File.open("#{output_dir}/i18n.js", "w") {|file| file << contents }
+
+# Then regenerate the NPM/Bower JSON file.
+update_version("./package.json")
+update_version("./bower.json")
+
+# Export minified version.
+system "./node_modules/.bin/uglifyjs dist/i18n.js --compress --mangle --output dist/i18n.min.js"
+system "cat dist/i18n.min.js | gzip -9 --stdout > dist/i18n.js.gz"

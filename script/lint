@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -e
+
+./script/ruby-lint
+./script/js-lint

@@ -1,0 +1,11 @@
+{
+  "env": {
+    "jasmine": true,
+    "amd": true,
+    "commonjs": true
+  },
+  "extends": ".eslintrc",
+  "rules": {
+    "max-nested-callbacks": [2, 4]
+  }
+}

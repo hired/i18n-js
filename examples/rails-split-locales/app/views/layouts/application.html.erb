@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html data-default-lang="<%= I18n.default_locale %>" lang="<%= I18n.locale %>">
+<head>
+  <title>Myapp</title>
+  <%= stylesheet_link_tag   "application", "data-turbolinks-track" => "reload" %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => "reload" %>
+  <%= javascript_include_tag "application/locales/#{I18n.locale}", "data-turbolinks-track" => "reload" %>
+  <%= csrf_meta_tags %>
+</head>
+<body data-route="application/pages/<%= controller.controller_name %>/<%= controller.action_name %>">
+
+<%= yield %>
+
+<p>
+  <%= t("switch_language") %>
+  <%= link_to "Português (Brasil)", root_path(locale: "pt-BR") %>
+  <%= link_to "English", root_path(locale: "en") %>
+</p>
+</body>
+</html>

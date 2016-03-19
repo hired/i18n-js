@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>i18n-js</title>
+  <link rel="stylesheet" href="../../node_modules/qunitjs/qunit/qunit.css">
+</head>
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script src="../../node_modules/qunitjs/qunit/qunit.js"></script>
+  <script src="../../node_modules/sinon/pkg/sinon.js"></script>
+  <script src="../../app/assets/javascripts/i18n/shims.js"></script>
+  <script src="../../dist/i18n.js"></script>
+  <script src="../../app/assets/javascripts/i18n/pluralization/ru.js"></script>
+  <script>
+    QUnit.config.hidepassed = true;
+    QUnit.config.noglobals = true;
+
+    function require(path) {
+      if (path.match(/i18n/)) {
+        return I18n;
+      } else {
+        return Translations;
+      }
+    }
+  </script>
+
+  <!-- load support files -->
+  <script src="support/translations.js"></script>
+  <!-- load your spec files -->
+  <script src="currency_test.js"></script>
+  <script src="current_locale_test.js"></script>
+  <script src="dates_test.js"></script>
+  <script src="defaults_test.js"></script>
+  <script src="interpolation_test.js"></script>
+  <script src="interpolation_pluralization_test.js"></script>
+  <script src="locales_test.js"></script>
+  <script src="localization_test.js"></script>
+  <script src="merge_test.js"></script>
+  <script src="numbers_test.js"></script>
+  <script src="placeholder_test.js"></script>
+  <script src="pluralization_test.js"></script>
+  <script src="pluralization_ru_test.js"></script>
+  <script src="sanity_check_test.js"></script>
+  <script src="translate_test.js"></script>
+  <script src="with_locale_test.js"></script>
+</body>
+</html>

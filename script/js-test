@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+export NODE_PATH="./dist:$NODE_PATH"
+
+./script/dist
+./script/js-lint
+./node_modules/.bin/node-qunit-phantomjs test/js/tests.html
+./node_modules/.bin/node-qunit-phantomjs test/js/tests_amd.html

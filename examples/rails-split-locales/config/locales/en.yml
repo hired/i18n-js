@@ -1,0 +1,14 @@
+en:
+  hello: "Hello world"
+  you_clicked_a_button: "You clicked a button!"
+  switch_language: Switch language
+  welcome_to_the_home_page: Welcome to the home page.
+  click_me: Click me!
+  read_more_about_us_html: >
+    Read more <a href="%{url}">about us</a>.
+  go_back: Go back
+  site:
+    about:
+      title: About
+    home:
+      title: Home

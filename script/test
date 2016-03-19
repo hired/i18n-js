@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -e
+
+./script/js-test
+./script/ruby-test

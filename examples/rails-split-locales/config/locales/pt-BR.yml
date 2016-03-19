@@ -1,0 +1,14 @@
+pt-BR:
+  hello: "Olá mundo"
+  you_clicked_a_button: "Você clicou em um botão!"
+  switch_language: Mudar idioma
+  welcome_to_the_home_page: Bem-vindo à página inicial.
+  click_me: Clique-me!
+  read_more_about_us_html: >
+    Leia mais <a href="%{url}">sobre a gente</a>.
+  go_back: Voltar
+  site:
+    about:
+      title: Sobre
+    home:
+      title: Página inicial

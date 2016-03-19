@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -e
+
+./node_modules/.bin/eslint --no-inline-config --config .eslintrc ./app/assets/javascripts/i18n.html.erb
+./node_modules/.bin/eslint --no-inline-config --config .eslintrc.test ./spec/js/support/*.js
+./node_modules/.bin/eslint --no-inline-config --config .eslintrc.test ./spec/js/**/*.spec.js

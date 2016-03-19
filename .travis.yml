@@ -1,0 +1,17 @@
+language: node_js
+sudo: false
+cache:
+  directories:
+    - $GEM_HOME
+    - $GEM_PATH
+    - node_modules
+install:
+  - rvm install 2.3.0
+  - gem install bundler
+  - cd $TRAVIS_BUILD_DIR && bundle install
+  - cd $TRAVIS_BUILD_DIR && npm install
+script: cd $TRAVIS_BUILD_DIR && ./script/test
+node_js:
+  - '5.9'
+notifications:
+  email: false

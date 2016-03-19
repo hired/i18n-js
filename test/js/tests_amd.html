@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>i18n-js</title>
+  <link rel="stylesheet" href="../../node_modules/qunitjs/qunit/qunit.css">
+</head>
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script src="../../node_modules/qunitjs/qunit/qunit.js"></script>
+  <script src="../../node_modules/sinon/pkg/sinon.js"></script>
+  <script src="../../node_modules/requirejs/require.js"></script>
+  <script>
+    QUnit.config.hidepassed = true;
+    QUnit.config.noglobals = true;
+    QUnit.config.autostart = false;
+
+    // Prepare requirejs shims to wrap each test so that it will work
+    // with the require syntax loading.
+    var testScripts = [
+      "currency_test.js",
+      "current_locale_test.js",
+      "dates_test.js",
+      "defaults_test.js",
+      "interpolation_test.js",
+      "interpolation_pluralization_test.js",
+      "locales_test.js",
+      "localization_test.js",
+      "merge_test.js",
+      "numbers_test.js",
+      "placeholder_test.js",
+      "pluralization_test.js",
+      "pluralization_ru_test.js",
+      "sanity_check_test.js",
+      "translate_test.js",
+      "with_locale_test.js"
+    ];
+
+    var shims = {};
+
+    testScripts.forEach(function(name) {
+      shims[name] = {deps: ["i18n"]};
+    });
+
+    require.config({
+      baseUrl : "./",
+      paths: {
+        i18n: "../../dist/i18n",
+        "i18n/pluralization/ru": "../../app/assets/javascripts/i18n/pluralization/ru",
+        browser_shims: "../../app/assets/javascripts/i18n/shims"
+      },
+
+      /* Since the i18n.js file explicitly names its module 'i18n', but each
+      spec uses the full path in the require statement, it appears that
+      loading fails. This map will map the full path to the short form.
+      */
+      map: {
+        "*": {
+          "../../dist/i18n": "i18n"
+        }
+      },
+      shim: shims
+    });
+
+    var deps = [
+      "i18n", "support/translations", "browser_shims", "i18n/pluralization/ru"
+    ].concat(testScripts);
+
+    require(deps, function(I18n, translationFactory) {
+        // Example for using the translation factory
+        I18n.translations = translationFactory();
+
+        // Execute the specs
+        QUnit.start();
+      });
+  </script>
+</body>
+</html>

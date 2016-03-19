@@ -1,0 +1,10 @@
+app
+lib
+script
+test
+.*
+Gemfile
+Gemfile.lock
+*.gemspec
+Rakefile
+examples

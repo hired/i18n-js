@@ -1,0 +1,35 @@
+{
+  "authors": [
+    "Nando Vieira <fnando.vieira@gmail.com>"
+  ],
+  "description": "A small library that brings I18n translations to Javascript",
+  "homepage": "https://github.com/fnando/i18n-js",
+  "ignore": [
+    "**/.*",
+    "*.gemspec",
+    ".*",
+    "app",
+    "bower_components",
+    "examples",
+    "Gemfile",
+    "Gemfile.lock",
+    "lib",
+    "node_modules",
+    "Rakefile",
+    "script",
+    "test"
+  ],
+  "keywords": [
+    "i18n",
+    "internationalization"
+  ],
+  "license": "MIT",
+  "main": "dist/i18n.js",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "name": "i18n-js",
+  "version": "4.0.0"
+}
